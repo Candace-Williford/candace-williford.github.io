@@ -1,0 +1,50 @@
+---
+layout: post
+comments: true
+title: Middleware and configuration
+---
+
+Okay, work's been a bit crazy this week so I didn't get much time to study but I did finally manage to squeeze in a couple days. I continued watching the ASP.NET Core course and PluralSight and so far it looks pretty awesome. I finished the first module which went over middleware and configuration. 
+
+The configuration is handled in the 'Startup.cs' file and requires a 'ConfigureServices' method and a 'Configure' method. 
+'Configure' utilizes dependency injection to set up the request pipeline for the application by adding middleware. This method takes an instance of 'IApplicationBuilder' and 'IHostingEnvironment' to handle any specic properties of your application. The 'IApplicationBuilder' instance will also be what you add your middleware to. 'Configure' also takes any other interfaces as parameters that you may need to setup your middleware.
+
+'ConfigureServices' is where you register all of your services that aren't automatically registered by ASP.NET Core. Most commonly, you are going to register custom services or the MVC service. Another interesting fact to note is that "dependency injection isn't set up until after ConfigureServices is invoked" (Microsoft).
+
+From my understanding, middleware is the first component to handle an HTTP request and the last one to handle a response. You can also have multiple pieces of middleware, each one passing the request off to the next one after it finihes handling it. This is called the "pipeline" and is why the order in which you invoke your middleware is important. One piece of middleware may affect the way the response is handled by the next piece.
+
+I saw examples of some really signification pieces of middleware, first of which is the 'StaticFiles' middleware. This piece of middleware will allow you to reference static files via URL in wwwroot folder of your application
+
+We also went 
+
+//discuss controllers
+//routing
+//attributes
+
+<cite>
+Anderson, R., Michaelis, M., Smith, S., Roth, D., & Latham, L. (2018, January 11). Configuration in ASP.NET Core App. Retrieved January 31, 2018, from https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
+</cite>
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = {{ page.url }};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{ page.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://candace-williford.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+{% endif %}
