@@ -21,7 +21,9 @@ Attribute based routing behaves much the same way but is set up using attributes
 
 After the controller's action is done handling the request, it then generates an action result that implements 'IActionResult'. This action result is then used to format and handle the response. However it should be noted that the action result is not executed until later in the pipeline when the response is actually being rendered. This is better separation of concerns by enabling the controller to only be concerned with WHAT should be done and not having to worry about having to actually DO that action.
 
-When the action is handled it will either get returned as a response to some other service such as a REST API, or it will get rendered into a view as HTML. I will write about that next week after I go through some more of the course. I will also be talking about models and integrating with Entity Framework. I don't have a lot of experience with Entity Framework so it will be really nice to check that out. It will also be interesting to get SQL Server up and running on my system because I'm actually on Ubuntu right now. We'll see! Be back next week!
+When the action is handled it will either get returned as a response to some other service such as a REST API, or it will get rendered into a view as HTML. I will write about that next week after I go through some more of the course. I will also be talking about models and integrating with Entity Framework. I don't have a lot of experience with Entity Framework so it will be really nice to check that out. It will also be interesting to get SQL Server up and running on my system because I'm actually on Ubuntu right now. 
+
+I'm also going to try and get a theme on my blog this weekend. I've got one picked out that I like, I've just had trouble finding the time to do so stay tuned for that!
 
 <cite>
 Anderson, R., Michaelis, M., Smith, S., Roth, D., & Latham, L. (2018, January 11). Configuration in ASP.NET Core App. Retrieved January 31, 2018, from https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
