@@ -4,9 +4,9 @@ comments: true
 title: Introduction
 ---
 
-Hey guys, I'm a software developer with experience in a broad spectrum of stuff such as C# and .NET webforms, Groovy, Velocity, CMSs (Intrexx in particular), some JavaScript and Git and a few other things sprinkled in between. What I'd really like to do is learn as much as I can about web development using REST APIs with a strong emphasis on cyber security.
+Hey guys, I'm a software developer with experience in a broad spectrum of stuff such as C# and .NET webforms, Groovy, Velocity, CMSs (Intrexx in particular), some JavaScript and Git and a few other things sprinkled in between. What I'd really like to do is learn as much as I can about anything I can get my hands on.
 
-This blog is to help me learn these concepts. I'm a hands-on learner so things "stick" a lot better for me if I can actually DO them and then explain what I've learned. I've got an idea for an app that will eventually incorporate all of the technologies I'm interested in. I've even got an idea of how I could utilize machine learning.
+This blog is to help me keep track of everything I'm learning. I'm a hands-on learner so things "stick" a lot better for me if I can actually DO them and then explain what I've learned. 
 
 It's my goal right now to commit to my GitHub about 2-3 times a week and this blog about once a week.
 
