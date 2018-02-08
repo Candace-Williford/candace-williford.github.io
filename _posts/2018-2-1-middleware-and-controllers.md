@@ -4,7 +4,7 @@ comments: true
 title: Middleware and Controllers
 ---
 
-Okay, work's been a bit crazy this week so I didn't get much time to study but I did finally manage to squeeze in a couple days. I continued watching the ASP.NET Core course on PluralSight and so far it looks pretty awesome. I finished the first and second modules which went over middleware, configuration, controllers, routing, and action results. 
+Okay, work's been a bit crazy this week so I didn't get much time to study but I did finally manage to squeeze in a couple days. I decided I'd start with learning about ASP.NET Core since I keep hearing about it more and more these days. I started watching the ASP.NET Core course on PluralSight and so far it looks pretty awesome. I finished the first and second modules which went over middleware, configuration, controllers, routing, and action results. 
 
 Configuration is handled in the 'Startup.cs' file and requires a 'ConfigureServices' method and a 'Configure' method. 
 'Configure' utilizes dependency injection to set up the request pipeline for the application by adding middleware. This method takes instances of 'IApplicationBuilder' and 'IHostingEnvironment' to handle any specific properties of your application, and also any other objects you may need to set up your middleware. The 'IApplicationBuilder' instance is what you add your middleware to.
@@ -23,7 +23,7 @@ After the controller's action is done handling the request, it then generates an
 
 When the action is handled it will either get returned as a response to some other service such as a REST API, or it will get rendered into a view as HTML. I will write about that next week after I go through some more of the course. I will also be talking about models and integrating with Entity Framework. I don't have a lot of experience with Entity Framework so it will be really nice to check that out. It will also be interesting to get SQL Server up and running on my system because I'm actually on Ubuntu right now. 
 
-I'm also going to try and get a theme on my blog this weekend. I've got one picked out that I like, I've just had trouble finding the time to do so stay tuned for that!
+I'm also going to try and get a theme on my blog soon. I've got one picked out that I like, I've just had trouble finding the time to do it so stay tuned for that!
 
 <cite>
 Anderson, R., Michaelis, M., Smith, S., Roth, D., & Latham, L. (2018, January 11). Configuration in ASP.NET Core App. Retrieved January 31, 2018, from https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
