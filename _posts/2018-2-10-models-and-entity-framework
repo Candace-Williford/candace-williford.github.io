@@ -1,0 +1,51 @@
+---
+layout: post
+comments: true
+title: Models and Entity Framework
+---
+
+This week I watched the the modules about models and entity framework. The two really go hand in hand because entity framework will use your models to figure out your table structure and how to manipulate data accordingly.
+
+There are actually two different types of models, the first one being entity models. The purpose of these models are pretty straight forward in that their primary purpose is to provide a data structure for the objects that you need in your program that can be easily used to interact with the database. This is usually just a class with a bunch of properties. You can also set up data annotations that operate as constraints on update and insert.
+
+The other type of model is a view model, also known as data transfer objects. These models are used to interact with a view. They usually receive a list of entity models to populate the view or a single entity for when the user is creating a new object. On update or insert the view will usually then send a view model back to the controller to handle the action. 
+
+View models help prevent overposting, a user adding additional data to the request allowing them to manipulate data they don't have access to. The view model will usually have a subset of fields that you allow to be edited by a view instead of passing the entity model which would open up access to all properties. ASP.NET Core also attaches a token to the users form that corresponds to their HTTP request that helps prevent cross-site request forgery. The framework can check this token to make sure that that is actually a form that you sent to the user. To do this add the `[ValidateAntiForgeryToken]` attribute to the action on the controller that is handling the form and then invoke the `ModelState.IsValid` check.
+
+//Entity model
+    //data annotations
+//view model (DTO or Data Transfer Obect)
+    //interacts with a view
+    //usually receives a list of entity models that are used to populate the view
+    //helps prevent overposting instead of linking directly the model because MVC will try to set every property on the model it receives.
+    //best to return an action instead of a view so that the POST action doesn't get redone if the user tries to refresh or navigate away from the page
+    //frequently used to carry data into and out of an entity
+    //ValidateAntiForgeryToken by doing ModelState.IsValid
+    
+HttpPost and HttpGet attributes are route constraints you can throw on method of the same action that will be used depending on if the request is a GET or a POST
+
+Because of the configurability of the MVC framework, we can easily set up entity framework. All we have to do is set up the DbContext and configure the services. This will then allow us to create an initial migration that will take care of creating our DB and the schema we need to run the application. You can also add any initial SQL you might need to run such as any initial data or indexes.
+
+
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = {{ page.url }};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{ page.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://candace-williford.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
