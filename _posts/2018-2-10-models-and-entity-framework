@@ -4,29 +4,32 @@ comments: true
 title: Models and Entity Framework
 ---
 
-This week I watched the the modules about models and entity framework. The two really go hand in hand because entity framework will use your models to figure out your table structure and how to manipulate data accordingly.
+This week I watched the segments about models and entity framework. The two really go hand in hand because entity framework will use your models to figure out your table structure and how to manipulate data accordingly.
 
-There are actually two different types of models, the first one being entity models. The purpose of these models are pretty straight forward in that their primary purpose is to provide a data structure for the objects that you need in your program that can be easily used to interact with the database. This is usually just a class with a bunch of properties. You can also set up data annotations that operate as constraints on update and insert.
+There are actually two different types of models, the first one being entity models. The purpose of these models is pretty straight forward in that their primary purpose is to provide a data structure for the objects that you need in your program that can be easily used to interact with the database. This is usually just a class with a bunch of properties. You can also set up data annotations, or attributes, that operate as constraints when updating the properties on the model.
 
-The other type of model is a view model, also known as data transfer objects. These models are used to interact with a view. They usually receive a list of entity models to populate the view or a single entity for when the user is creating a new object. On update or insert the view will usually then send a view model back to the controller to handle the action. 
+Two other useful attribues I learned about are, HttpPost and HttpGet. These are route constraints you can attach to methods on the conroller for the same action that will be used depending on if the request is a GET or a POST
 
-View models help prevent overposting, a user adding additional data to the request allowing them to manipulate data they don't have access to. The view model will usually have a subset of fields that you allow to be edited by a view instead of passing the entity model which would open up access to all properties. ASP.NET Core also attaches a token to the users form that corresponds to their HTTP request that helps prevent cross-site request forgery. The framework can check this token to make sure that that is actually a form that you sent to the user. To do this add the `[ValidateAntiForgeryToken]` attribute to the action on the controller that is handling the form and then invoke the `ModelState.IsValid` check.
+The other type of model is a view model, also known as data transfer objects. These models are used to interact with a view. They usually receive a list of entity models to populate the view or a single entity model for when the user is creating a new object. On update or insert the page, or view, will usually then send a view model back to the controller to handle the action.
 
-//Entity model
-    //data annotations
-//view model (DTO or Data Transfer Obect)
-    //interacts with a view
-    //usually receives a list of entity models that are used to populate the view
-    //helps prevent overposting instead of linking directly the model because MVC will try to set every property on the model it receives.
-    //best to return an action instead of a view so that the POST action doesn't get redone if the user tries to refresh or navigate away from the page
-    //frequently used to carry data into and out of an entity
-    //ValidateAntiForgeryToken by doing ModelState.IsValid
-    
-HttpPost and HttpGet attributes are route constraints you can throw on method of the same action that will be used depending on if the request is a GET or a POST
+One benefit to using a view model is that it helps prevent overposting, which is the action of a user adding additional data to the request allowing them to manipulate data they don't have access to. The view model will typically have a subset of fields that you allow to be edited by a view that will then set the corresponding data on the entity modle (hence the name "data transfer object". This is favorable to passing the entire entity model itself because that would open up access to all properties.
 
-Because of the configurability of the MVC framework, we can easily set up entity framework. All we have to do is set up the DbContext and configure the services. This will then allow us to create an initial migration that will take care of creating our DB and the schema we need to run the application. You can also add any initial SQL you might need to run such as any initial data or indexes.
+ASP.NET Core also attaches a token to the users form that corresponds to their HTTP request. This token helps prevent cross-site request forgery. The framework can check it to make sure that that is actually a form that was sent to the user by the current request. To do this add the `[ValidateAntiForgeryToken]` attribute to the action on the controller that is handling the form and then invoke the `ModelState.IsValid` check.
 
+It's also interesting that there are supporting arguments that entities and models are NOT the same things as they are actually considered to be in the ASP.NET MVC framework. The argument is that entities take care of data persistence only, be it through methods and/or properties and that the model holds the business logic. ASP.NET's flexibility on the use of the two terms is most evident by the fact that you can place your entity models in a folder titled either "Models" or "Entities". However, if you are properly using the framework, maintaining it's flexibility in it's support for Entity Framework, then it's best to think of the entity models as in fact entities because their sole purpose is actually data interaction and the business logic is handled by the viewmodel (cpratt).
 
+Because of the configurability and flexibility of the MVC framework, it's very quick and simple to set up entity framework. All we have to do is set up the DbContext and configure the services to send the DbContext the database connection string. This will then allow us to create an initial migration that will take care of creating our DB and the schema we need to run the application. You can also add any initial SQL you might need to run such as any initial data or indexes.
+
+what is entity framework?
+http://www.entityframeworktutorial.net/what-is-entityframework.aspx - entity framework is used for database interaction.
+
+what are migrations?
+A database migration is a way of taking the class structure in an application and transforming it into a database. 
+//pros and cons - database should be treated as it's own code and project - might not be able to optimize and refactor some code quite as easily, though this may just be more evident if you ever just wanted to remove a property from an entity, perhaps one that was no longer being used but you can't because you might lose data when an updated migration is implemented. http://workingwithdevs.com/delivering-databases-migrations-vs-state/
+
+https://cpratt.co/entities-are-not-models/
+http://www.entityframeworktutorial.net/what-is-entityframework.aspx
+http://workingwithdevs.com/delivering-databases-migrations-vs-state/
 
 {% if page.comments %}
 <div id="disqus_thread"></div>
