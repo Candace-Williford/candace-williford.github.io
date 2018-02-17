@@ -25,9 +25,11 @@ My next post will be about Razor views and authentication. It'll probably be a c
 <cite>
 Pratt, Chris. “Entities Are Not Models.” Chris Pratt, Chris Pratt, 10 Dec. 2014, cpratt.co/entities-are-not-models/.
 </cite>
+
 <cite>
 "What is Entity Framework?" 17 February 2018, entityframeworktutorial.net/what-is-entityframework.aspx.
 </cite>
+
 <cite>
 Yates, Alex. “Critiquing Two Different Approaches to Delivering Databases: Migrations vs State.” Working with Devs..., 18 June 2015, workingwithdevs.com/delivering-databases-migrations-vs-state/.
 </cite>
