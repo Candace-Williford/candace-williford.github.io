@@ -22,11 +22,15 @@ A database migration is a way of taking the class structure in an application an
 
 My next post will be about Razor views and authentication. It'll probably be a couple weeks before I get that out because I want to take a look at HackerOne and BugCrowd and see what they're all about.
 
+<cite>
 Pratt, Chris. “Entities Are Not Models.” Chris Pratt, Chris Pratt, 10 Dec. 2014, cpratt.co/entities-are-not-models/.
-
+</cite>
+<cite>
 "What is Entity Framework?" 17 February 2018, entityframeworktutorial.net/what-is-entityframework.aspx.
-
+</cite>
+<cite>
 Yates, Alex. “Critiquing Two Different Approaches to Delivering Databases: Migrations vs State.” Working with Devs..., 18 June 2015, workingwithdevs.com/delivering-databases-migrations-vs-state/.
+</cite>
 
 {% if page.comments %}
 <div id="disqus_thread"></div>
@@ -49,3 +53,5 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+{% endif %}
